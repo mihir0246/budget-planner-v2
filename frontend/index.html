@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Budget Planner</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Personal Budget Planner</h1>
+
+        <!-- Dashboard -->
+        <div id="dashboard">
+            <h2>Dashboard</h2>
+            <div id="balance-display">
+                <p>Total Income: $<span id="total-income">0.00</span></p>
+                <p>Total Expenses: $<span id="total-expenses">0.00</span></p>
+                <p>Net Balance: $<span id="net-balance">0.00</span></p>
+            </div>
+            <label for="month-select">Select Month:</label>
+            <input type="month" id="month-select" value="2023-10">
+            <button onclick="loadDashboard()">Load Dashboard</button>
+        </div>
+
+        <!-- Add Income -->
+        <div id="add-income">
+            <h2>Add Income</h2>
+            <form id="income-form">
+                <input type="text" id="income-source" placeholder="Source (e.g., Salary)" required>
+                <input type="number" id="income-amount" placeholder="Amount" step="0.01" required>
+                <input type="month" id="income-month" required>
+                <button type="submit">Add Income</button>
+            </form>
+        </div>
+
+        <!-- Add Expense -->
+        <div id="add-expense">
+            <h2>Add Expense</h2>
+            <form id="expense-form">
+                <input type="text" id="expense-category" placeholder="Category (e.g., Rent)" required>
+                <input type="number" id="expense-amount" placeholder="Amount" step="0.01" required>
+                <input type="month" id="expense-month" required>
+                <button type="submit">Add Expense</button>
+            </form>
+        </div>
+
+        <!-- Transactions List -->
+        <div id="transactions">
+            <h2>Transactions</h2>
+            <label for="category-filter">Filter by Category:</label>
+            <select id="category-filter">
+                <option value="">All Categories</option>
+                <!-- Categories will be populated dynamically -->
+            </select>
+            <button onclick="loadTransactions(document.getElementById('month-select').value)">Apply Filter</button>
+            <div id="transactions-list">
+                <!-- Transactions will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

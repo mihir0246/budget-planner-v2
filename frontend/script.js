@@ -27,7 +27,8 @@ async function loadTransactions(month) {
         // Populate category filter options
         const categories = new Set();
         data.expenses.forEach(expense => categories.add(expense.category));
-        categoryFilter.innerHTML = '<option value="">All Categories</option>';
+        data.incomes.forEach(income => categories.add(income.source));
+        categoryFilter.innerHTML = '<option value="">All Categories/Sources</option>';
         categories.forEach(category => {
             const option = document.createElement('option');
             option.value = category;
